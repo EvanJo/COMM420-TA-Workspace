@@ -14,15 +14,16 @@ brew install winetricks
 
 - Step 2: Initialize wine 
 ```sh 
+WINEPREFIX="$HOME/.wine" WINEARCH=win32 wine wineboot
 wine winecfg
 ```
-A window will pop up. You may consider mapping *Drives* or editing *Desktop Integreations*, but it's not necessary for the use of RIT.
+A window will pop up. Select Windows version: Windows 10. You may consider mapping *Drives* or editing *Desktop Integreations*, but it's not necessary for the use of RIT.
 
 ## Install .NET Framework
 
 - Step 3: Install .NET 4.8 using `winetricks`:
 ```sh
-winetricks dotnet48
+winetricks -q --force dotnet48
 ```
 Follow the screen prompts (regular Windows installation process).
 
@@ -31,6 +32,10 @@ Follow the screen prompts (regular Windows installation process).
 - Step 4: Download RIT to wine's C:\ Drive
 ```sh
 curl 'http://rit.306w.ca/client/Client.application' -o ~/.wine/drive_c/Client.application
+```
+- You can now run the RIT client with 
+```sh
+wine start C:\Client.application
 ```
 
 ## Install and run RIT with a single command
